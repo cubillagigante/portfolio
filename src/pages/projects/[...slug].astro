@@ -1,0 +1,234 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const pages = [
+    {
+      slug: 1,
+      order: 1,
+      title: "GoPlanX",
+      category: "Aplicación de smartphone",
+      text: "Esta aplicación es principalmente pensada para los freelancers y ayuda a definir el precio del servicio prestado por medio del tiempo por hora calcula por el costo que el usuario define.",
+      video:
+        "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7238942729978707968?compact=1",
+    },
+    {
+      slug: 2,
+      order: 2,
+      title: "Proyecto Seltz",
+      category: "Sistema Control de pedidos y stock",
+      text: "Sistema con rol de Chofer, Gerente y Cliente, permite al cliente hacer los pedidos, el chofer tomar los pedidos y al gerente observar el movimiento de los mismos.",
+      video:
+        "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7219511262550880256?compact=1",
+    },
+    {
+      slug: 3,
+      order: 3,
+      title: "Registro y lectura de usuarios por QR",
+      category: "Sistema de usuarios",
+      text: "El sistema permite al usuario cliente generar un qr con sus datos, asi mismo con la cámara del dispositivo este permite registrarlo a la base de datos.",
+      video:
+        "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7221742191172366340?compact=1",
+    },
+    {
+      slug: 4,
+      order: 4,
+      title: "Ruc Py",
+      category: "Extension de Chrome",
+      text: "Permite hacer consultas sobre número de RUC o nombre razón social.",
+      video:
+        "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7220527761688305664?compact=1",
+    },
+  ];
+  return pages.map(({ slug, title, text, category, video, order }) => {
+    return {
+      params: { slug },
+      props: { title, text, category, video, order },
+    };
+  });
+}
+const { title, text, category, video, order } = Astro.props;
+---
+
+<Layout title={title}>
+  <main class="flex justify-center gap-x-36">
+    <!-- BOTON DE CAROUSEL IZQ -->
+    <div id="btniz" data-order={order} class="md:flex hidden items-center">
+      <span
+        class="p-5 cursor-pointer bg-[#c800358c] hover:bg-[#c80035de] transition ease-in-out duration-300 rounded-full"
+      >
+        <Icon name="mdi:arrow-left-thick" class="w-8 h-8 text-white" />
+      </span>
+    </div>
+    <!-- CUERPO -->
+    <div
+      class="w-[60em] md:pt-10 p-0 justify-center items-center"
+      data-aos="fade-right"
+    >
+      <!-- BARRA DE NAVEGACION -->
+      <header class="flex bg-[#C80036] md:rounded-t-xl">
+        <a href="../"
+          ><div
+            class="transition ease-in-out duration-300 md:rounded-tl-xl flex justify-center text-white hover:bg-red-900 fontbold bg-red-800 text-center px-5 py-5 font-bold"
+          >
+            <div>
+              <Icon name="mdi:home" class="w-8 h-8 text-white" />
+            </div>
+          </div></a
+        >
+        <div
+          id="titulo"
+          class="flex items-center justify-center w-[90%] text-white font-semibold"
+        >
+          {title}
+        </div>
+      </header>
+      <!-- FIN BARRA DE NAVEGACION -->
+      <!-- CONTENIDO -->
+      <section>
+        <div class="flex p-2 justify-center bg-[#C80036] w-full">
+          <iframe
+            id="video"
+            class="m-0 border border-white rounded-xl"
+            src={video}
+            height="399"
+            width="100%"
+            frameborder="0"
+            allowfullscreen=""
+            title="Publicación integrada"></iframe>
+          <div
+            id="load"
+            class="w-full h-[399px] flex justify-center items-center"
+          >
+            <div role="status">
+              <svg
+                aria-hidden="true"
+                class="inline w-14 h-14 text-white animate-spin fill-[#C80036]"
+                viewBox="0 0 100 101"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                  fill="currentFill"></path>
+              </svg>
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#eedcb8] p-10 text-[#0C1844] rounded-b-xl leading-8">
+          <h3 class="font-semibold">{category}</h3>
+          <small id="descripcion">{text}</small>
+          <div class="w-full flex items-center justify-between mt-5">
+
+            <a
+            class="mt-2 libutton bg-[#0a66c2fd] hover:bg-[#094e92] transition ease-in-out duration-300"
+            href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=diego-cubilla"
+            target="_blank"
+            >Sigueme <span
+              ><Icon name="mdi:linkedin" class="w-5 h-5 text-white" /></span
+            ></a
+          >
+          <div class="flex gap-x-2 md:hidden">
+            
+              <span id="btniz2" data-order={order}
+              class="p-2 flex w-14 h-14 items-center cursor-pointer bg-[#c800358c] hover:bg-[#c80035de] transition ease-in-out duration-300 rounded-full"
+              >
+                <Icon name="mdi:arrow-left-thick" class="w-full h-full text-white" />
+              </span>
+
+              <span id="btnder2"
+              class="p-2 flex w-14 h-14 items-center cursor-pointer bg-[#c800358c] hover:bg-[#c80035de] transition ease-in-out duration-300 rounded-full"
+            >
+              <Icon name="mdi:arrow-right-thick" class="w-full h-full text-white" />
+            </span>
+
+          </div>
+            
+          </div>
+          
+        </div>
+      </section>
+      <!-- FIN CONTENIDO -->
+    </div>
+    <!-- FIN DE CUERPO -->
+    <!-- BOTON DE CAROUSEL DERECHO -->
+    <div id="btnder" class="md:flex hidden items-center">
+      <span
+        class="p-5 cursor-pointer bg-[#c800358c] hover:bg-[#c80035de] transition ease-in-out duration-300 rounded-full"
+      >
+        <Icon name="mdi:arrow-right-thick" class="w-8 h-8 text-white" />
+      </span>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .libutton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+    justify-content: center;
+    padding: 7px;
+    text-align: center;
+    outline: none;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    width: 150px;
+    height: 32px;
+    border-radius: 10px;
+    font-family: "SF Pro Text", Helvetica, sans-serif;
+  }
+</style>
+<script>
+  const limite = 4;
+  function navleft(order) {
+    let neworder = limite; //numero identificador de la ultima pagina
+    if (order !== 1) {
+      neworder = order - 1;
+    }
+    window.location.href = `/projects/${neworder}`;
+  }
+
+  function navright(order) {
+    let neworder = 1;
+    if (order !== limite) {
+      //numero identificador de la ultima pagina si order quiere pasar a mas de la ultima pagina, vuelve a 1
+      neworder = order + 1; //si no llega al 'limite' sigue sumando a la siguiente pagina
+    }
+    window.location.href = `/projects/${neworder}`;
+  }
+
+  const btniz = document.getElementById("btniz");
+  const btnder = document.getElementById("btnder");
+
+  const btnizmobile = document.getElementById("btniz2");
+  const btndermobile = document.getElementById("btnder2");
+
+  let ordervalue = Number(btniz.dataset.order);
+
+  btniz.addEventListener("click", () => navleft(ordervalue));
+  btnder.addEventListener("click", () => navright(ordervalue));
+
+  btnizmobile.addEventListener("click", () => navleft(ordervalue));
+  btndermobile.addEventListener("click", () => navright(ordervalue));
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const iframe = document.getElementById("video");
+    const spinner = document.getElementById("load");
+    iframe.classList.add("hidden");
+    
+    iframe.addEventListener("load", () => {
+      iframe.classList.remove("hidden");
+      spinner.classList.add("hidden");
+    });
+  });
+
+  
+</script>

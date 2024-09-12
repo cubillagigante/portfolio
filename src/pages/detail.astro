@@ -1,0 +1,70 @@
+---
+
+export async function getStaticPaths() {
+  const pages = [
+    {
+      slug: undefined,
+      title: "Tienda de Astro",
+      text: "¡Te damos la bienvenida a la tienda de Astro!",
+    },
+    {
+      slug: "products",
+      title: "Productos de Astro",
+      text: "Tenemos muchos productos para ti",
+    },
+    {
+      slug: "products/astro-handbook",
+      title: "El libro definitivo de Astro",
+      text: "Si quieres aprender sobre Astro, debes leer este libro.",
+    },
+  ];
+  return pages.map(({ slug, title, text }) => {
+    return {
+      params: { slug },
+      props: { title, text },
+    };
+  });
+}
+const { title, text } = Astro.props;
+
+
+---
+<main>
+  <div class="max-w-[80em] m-auto" data-aos="fade-right">
+    <header class="flex bg-[#C80036] rounded-t-xl mb-1">
+      <a href="#"
+        ><div
+          class="rounded-tl-xl flex justify-center text-white hover:bg-red-900 fontbold bg-red-800 text-center w-[10%] p-5 font-bold"
+        >
+          volver
+        </div></a
+      >
+      <div id="titulo"
+        class="flex items-center justify-center w-[90%] text-white font-semibold"
+      >
+        Proyecto: {title}
+      </div>
+    </header>
+    <section>
+ <!--
+      <div class="flex justify-center bg-black w-full mb-1">
+		<iframe class="m-0" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7238942729978707968?compact=1" height="399" width="100%" frameborder="0" allowfullscreen="" title="Publicación integrada"></iframe>
+	  </div>
+      video o carousel de imagenes -->
+
+      <div class="bg-[#FFF5E1] p-10 text-[#0C1844] rounded-b-xl leading-8">
+        <h1 id="titulo2" class="text-lg font-semibold">PROYECTO SELTZ S.A.</h1>
+        <h3 class="font-semibold">{text}</h3>
+        <small id="descripcion"
+          >El sistema cuenta con roles de administrador, chofer y cliente</small
+        >
+        <br />
+        <a
+          class="text-xs underline underline-offset-1 hover:text-[#C80036]"
+          href="http://">Ver en Github</a
+        >
+      </div>
+    </section>
+  </div>
+</main>
+

@@ -1,0 +1,23 @@
+---
+
+const { titles, descr, ban } = Astro.props;
+
+---
+
+{
+ 
+    // Renderizar si ban es igual a 1
+    descr.map((descr, index) => (
+      <a href={descr} id={index}>
+        <button type="submit">
+          <div
+            data-aos="zoom-in"
+            class="ease-in duration-200 hover:rounded-xl h-36 hover:text-[#0C1844] hover:bg-[#FFF5E1] flex justify-center rounded-lg bg-red-800 p-10 w-40 items-center text-center"
+          >
+            {titles[index] && <h3>{titles[index]}</h3>}
+          </div>
+        </button>
+      </a>
+    ))
+  
+}

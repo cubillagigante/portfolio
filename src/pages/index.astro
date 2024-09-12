@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Social from '../components/social.astro';
+import Card from '../components/Card.astro';
+import Frontend from '../components/Frontendcom.astro';
+import Backend from '../components/Backend.astro';
+import Otrastec from '../components/Otrastec.astro';
+import { Icon } from 'astro-icon/components';
+
+---
+
+<Layout title="PORTFOLIO DC">
+	<main>
+		
+		<Social />
+	<div class="max-w-[80em] m-auto p-5 ">
+		
+		<div class="text-center p-5 text-black mb-5 flex justify-center">
+			<div class="">
+				<h1 class="font-bold text-2xl mb-1">Hola, soy Diego Cubilla!</h3>
+				<small class="text-justify text-lg">Desarrollador Frontend JR</small>
+				
+			</div>
+		</div>
+		<div class="w-full relative">
+			<!-- 
+			<section class="mb-5" data-aos="fade-right">
+				<section class=" rounded-xl bg-[#c80036] p-5 text-center text-white">
+					<h1 class="text-2xl font-semibold text-center">Hola, soy Diego Cubilla</h1>
+					<small class="text-xl font-thin">Desarrollador Frontend</small>	
+				</section>
+		</section>-->
+			<section class="mb-5" data-aos="fade-right">
+
+
+					<section class=" rounded-xl bg-[#c80036] p-5 text-center text-white">
+						<h1 class="text-2xl font-semibold text-center">PORTAFOLIO</h1>
+						<small class="text-lg">Aqui puede ver los proyectos en los que he trabajado.</small>
+						<hr class="my-5 w-40 m-auto border-2 rounded-full">
+						</hr>
+						
+						<div class=" p-2">
+							
+							<div class="flex gap-5 flex-wrap justify-center font-semibold">
+								<Card titles={['GOPLANX', 'PROYECTO SELTZ S.A', 'REGISTRO POR QR', 'RUCPY',]} 
+								descr={['projects/1', 'projects/2', 'projects/3', 'projects/4']} />
+							</div>
+							
+						</div>
+					</section>
+
+			</section>
+			<section class=" rounded-xl bg-[#c80036] text-white py-5 h-full" data-aos="fade-right">
+				<h1 class="text-2xl font-semibold text-center">MIS CONOCIMIENTOS </h1>
+				<hr class="my-5 w-40 m-auto border-2 rounded-full">
+				</hr>
+				<section class=" gap-5 justify-center font-semibold">
+					<Frontend />
+					<Backend />
+					<Otrastec />
+				</section>
+
+			</section>
+			<section class=" rounded-xl bg-[#c80036] text-white my-5 h-full flex flex-col gap-10 justify-center p-10" data-aos="fade-right">
+					<div class="md:m-auto w-full md:w-1/2 flex justify-center  flex-col gap-5">
+						<h1 class="text-2xl font-semibold text-center">ENVIAME UN MENSAJE</h1>
+						<hr class=" w-40 m-auto border-2 border-gray-300 rounded-full">
+						</hr>
+						<div class="flex flex-col md:flex-row gap-5">
+							<span class="font-semibold">Nombre: </span>
+							<input id="nombre" type="text" placeholder="ej: Carlos Benitez" class="shadow shadow-gray-700 rounded-lg px-2 h-8 text-black w-full md:w-3/4" />
+						</div>
+						
+						<div class="flex flex-col md:flex-row gap-5">
+							<span class="font-semibold">Mensaje: </span>
+							<textarea id="texto" placeholder="Hola amigo! vi tu página web y me interesó, podemos conversar sobre un proyecto?" class="shadow shadow-gray-700 text-md rounded-lg p-2 h-20 text-black w-full md:w-3/4"></textarea>
+							
+						</div>
+						
+							<input id="enviar" type="submit" class=" w-60 m-auto ease-in duration-200 bg-red-800 text-white cursor-pointer hover:bg-[#FFF5E1] hover:text-[#0C1844] font-bold text-sm rounded-xl text-center py-2 px-10" value="Enviar"></input>
+					</div>	
+			</section>
+		</div>
+		
+	</div>
+	</main>
+</Layout>
+
+<script>
+	
+       
+		const enviar = document.getElementById('enviar');
+		enviar.addEventListener('click', () => {
+		  const display = document.getElementById('texto').value;
+		  const input = document.getElementById('nombre').value;
+
+		  console.log("nombre ", input);
+		  
+		  if (input === "") {
+			alert("No puede dejar el campo nombre vacio");
+		  } else if (display === "") {
+			alert("No puede dejar el campo mensaje vacio");
+		  } else {
+			
+			window.location.href = "https://api.whatsapp.com/send/?phone=0982229061&text=Hola Diego! me llamo " + input + " " + display + "&type=phone_number&app_absent=0";
+			
+		}
+         
+        });
+        
+    
+
+
+</script>
