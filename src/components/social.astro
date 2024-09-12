@@ -4,8 +4,12 @@ import { Icon } from "astro-icon/components";
 
 ---
 <div class=" w-14 h-screen justify-evenly fixed flex flex-col z-50">
-  <div id="drop-zoneTop" class="drop-zone cursor-move h-full justify-center border-dashed flex items-start ">
+  <div id="drop-zoneTop" class="drop-zone cursor-move h-full justify-center border-dashed flex items-center ">
       <div id="drag-item" draggable="true" class="drag-item bg-[#fff] p-2 rounded-xl">
+          <div class="w-full flex justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 20 20"><path fill="#c80036" d="M10 2a.75.75 0 0 1 .53.22l1.5 1.5a.75.75 0 0 1-1.06 1.06l-.22-.22v1.69a.75.75 0 0 1-1.5 0V4.56l-.22.22a.75.75 0 0 1-1.06-1.06l1.5-1.5A.75.75 0 0 1 10 2m2 8a2 2 0 1 1-4 0a2 2 0 0 1 4 0m-9.78-.53a.75.75 0 0 0 0 1.06l1.5 1.5a.75.75 0 0 0 1.06-1.06l-.22-.22h1.69a.75.75 0 0 0 0-1.5H4.56l.22-.22a.75.75 0 0 0-1.06-1.06zM10 18a.75.75 0 0 0 .53-.22l1.5-1.5a.75.75 0 1 0-1.06-1.06l-.22.22v-1.69a.75.75 0 0 0-1.5 0v1.69l-.22-.22a.75.75 0 0 0-1.06 1.06l1.5 1.5c.14.141.331.22.53.22m7.78-8.53a.75.75 0 0 1 0 1.06l-1.5 1.5a.75.75 0 1 1-1.06-1.06l.22-.22h-1.69a.75.75 0 0 1 0-1.5h1.69l-.22-.22a.75.75 0 0 1 1.06-1.06z"/></svg>
+          </div>
+          <hr class="my-1">
           <img src="./py.png" class="w-12" alt="nacionalidad paraguaya" />
           <a href="https://www.linkedin.com/in/diego-cubilla/">
               <div>
@@ -22,7 +26,7 @@ import { Icon } from "astro-icon/components";
   <div id="drop-zoneMiddle" class="drop-zone cursor-move h-full border-dashed justify-center flex items-center">
       
   </div>
-  <div id="drop-zoneBot" class="drop-zone cursor-move h-full border-dashed justify-center flex items-end">
+  <div id="drop-zoneBot" class="drop-zone cursor-move h-full border-dashed justify-center flex items-center">
       
   </div>
 </div>
