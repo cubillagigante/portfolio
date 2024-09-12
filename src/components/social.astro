@@ -1,26 +1,78 @@
 ---
 import { Icon } from "astro-icon/components";
----
 
-<div class="w-14 2xl:w-20 p-2 gap-2 fixed grid justify-center items-center md:top-4 md:left-8 top-2 left-1 z-50 bg-[#fffefe] rounded-lg 2xl:bg-transparent">
-  <div class="flex justify-center">
-    <img src="./py.png" class="w-12" alt="nacionalidad paraguaya" />
+
+---
+<div class=" w-14 h-screen justify-evenly fixed flex flex-col z-50">
+  <div id="drop-zoneTop" class="drop-zone cursor-move h-full justify-center border-dashed flex items-start ">
+      <div id="drag-item" draggable="true" class="drag-item bg-[#fff] p-2 rounded-xl">
+          <img src="./py.png" class="w-12" alt="nacionalidad paraguaya" />
+          <a href="https://www.linkedin.com/in/diego-cubilla/">
+              <div>
+                  <Icon name="mdi:linkedin" class="w-10 h-10 text-[#c80036]" />
+              </div>
+          </a>
+          <a href="https://github.com/cubillagigante">
+              <div>
+                  <Icon name="mdi:github" class="w-10 h-10 text-[#c80036]" />
+              </div>
+          </a>
+      </div>
   </div>
-  <a href="https://www.linkedin.com/in/diego-cubilla/">
-    <div class="flex justify-center">
-      <Icon
-        name="mdi:linkedin"
-        class="hover:text-red-800 transition ease-in-out duration-1500 rounded-lg w-10 h-10 text-[#c80036]"
-      />
-    </div>
-  </a>
-  <a href="https://github.com/cubillagigante">
-    <div class="flex justify-center">
-      <Icon
-        name="mdi:github"
-        class="hover:text-red-800 transition ease-in-out duration-300 rounded-lg w-10 h-10 text-[#c80036]"
-      />
-    </div>
-  </a>
-  
+  <div id="drop-zoneMiddle" class="drop-zone cursor-move h-full border-dashed justify-center flex items-center">
+      
+  </div>
+  <div id="drop-zoneBot" class="drop-zone cursor-move h-full border-dashed justify-center flex items-end">
+      
+  </div>
 </div>
+
+<script>
+  const dragItem = document.getElementById('drag-item');
+  const dropzoneTop = document.getElementById('drop-zoneTop');
+  const dropzoneMiddle = document.getElementById('drop-zoneMiddle');
+  const dropzoneBot = document.getElementById('drop-zoneBot');
+
+  dragItem.addEventListener('dragstart', (ev) => {
+      ev.dataTransfer.setData('text/plain', dragItem.id);
+  });
+
+  const allowDrop = (ev) => {
+      dropzoneTop.classList.add("bg-[#db202052]");
+      dropzoneTop.classList.add("border-2");
+      dropzoneMiddle.classList.add("bg-[#db202052]");
+      dropzoneMiddle.classList.add("border-2");
+      dropzoneBot.classList.add("bg-[#db202052]");
+      dropzoneBot.classList.add("border-2");
+      ev.preventDefault(); // Necessary to allow the drop
+      
+  };
+
+  const handleDrop = (ev) => {
+      ev.preventDefault();
+      const id = ev.dataTransfer.getData('text/plain');
+      const item = document.getElementById(id);
+      // Ensure the drop target is a drop-zone
+      if (!ev.target.classList.contains('drop-zone')) {
+          ev.target = ev.target.closest('.drop-zone');
+      }
+      ev.target.appendChild(item);
+      item.style.position = 'relative'; // Reset the position
+      item.style.left = 'auto';
+      item.style.top = 'auto';
+
+      dropzoneTop.classList.remove("bg-[#db202052]");
+      dropzoneTop.classList.remove("border-2");
+      dropzoneMiddle.classList.remove("bg-[#db202052]");
+      dropzoneMiddle.classList.remove("border-2");
+      dropzoneBot.classList.remove("bg-[#db202052]");
+      dropzoneBot.classList.remove("border-2");
+  };
+
+  // Add event listeners to all drop zones
+  [dropzoneTop, dropzoneMiddle, dropzoneBot].forEach(zone => {
+      zone.addEventListener('dragover', allowDrop);
+      
+      zone.addEventListener('drop', handleDrop);
+  });
+</script>
