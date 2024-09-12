@@ -68,7 +68,7 @@ const { title, text, category, video, order } = Astro.props;
     >
       <!-- BARRA DE NAVEGACION -->
       <header class="flex bg-[#C80036] md:rounded-t-xl">
-        <a href="../../"
+        <a href="../"
           ><div
             class="transition ease-in-out duration-300 md:rounded-tl-xl flex justify-center text-white hover:bg-red-900 fontbold bg-red-800 text-center px-5 py-5 font-bold"
           >
@@ -193,7 +193,7 @@ const { title, text, category, video, order } = Astro.props;
     if (order !== 1) {
       neworder = order - 1;
     }
-    window.location.href = `/portfolio/projects/${neworder}`;
+    window.location.href = `/projects/${neworder}`;
   }
 
   function navright(order) {
@@ -202,7 +202,7 @@ const { title, text, category, video, order } = Astro.props;
       //numero identificador de la ultima pagina si order quiere pasar a mas de la ultima pagina, vuelve a 1
       neworder = order + 1; //si no llega al 'limite' sigue sumando a la siguiente pagina
     }
-    window.location.href = `/portfolio/projects/${neworder}`;
+    window.location.href = `/projects/${neworder}`;
   }
 
   const btniz = document.getElementById("btniz");
