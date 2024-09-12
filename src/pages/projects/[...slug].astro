@@ -193,7 +193,7 @@ const { title, text, category, video, order } = Astro.props;
     if (order !== 1) {
       neworder = order - 1;
     }
-    window.location.href = `portfolio/projects/${neworder}`;
+    window.location.href = `/portfolio/projects/${neworder}`;
   }
 
   function navright(order) {
@@ -202,7 +202,7 @@ const { title, text, category, video, order } = Astro.props;
       //numero identificador de la ultima pagina si order quiere pasar a mas de la ultima pagina, vuelve a 1
       neworder = order + 1; //si no llega al 'limite' sigue sumando a la siguiente pagina
     }
-    window.location.href = `portfolio/projects/${neworder}`;
+    window.location.href = `/portfolio/projects/${neworder}`;
   }
 
   const btniz = document.getElementById("btniz");
