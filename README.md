@@ -47,7 +47,7 @@ Desarrollo de webs frontend, en las tecnologias:
 Si deseas saber más sobre mí o colaborar en un proyecto, no dudes en contactarme:
 
 - **Correo electrónico:** diegocubilla2001@gmail.com
-- **LinkedIn:** [(https://www.linkedin.com/in/diego-cubilla/)](#)
+- **LinkedIn:** [https://www.linkedin.com/in/diego-cubilla/](#)
 - **GitHub:** [https://github.com/cubillagigante](#)
 
 ## 🎉 Agradecimientos
