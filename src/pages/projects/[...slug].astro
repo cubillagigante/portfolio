@@ -40,6 +40,15 @@ export async function getStaticPaths() {
       video:
         "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7220527761688305664?compact=1",
     },
+    {
+      slug: 5,
+      order: 5,
+      title: "JC MATERIALES",
+      category: "Sistema Control de stock",
+      text: "Posibilidad de gestion de clientes, productos, stock de productos, precios, ventas, impresión de ticket, estadistica, ganancia, cantidad vendida, control de ventas por fecha",
+      video:
+        "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7241198687794741248?compact=1",
+    },
   ];
   return pages.map(({ slug, title, text, category, video, order }) => {
     return {
@@ -187,7 +196,7 @@ const { title, text, category, video, order } = Astro.props;
   }
 </style>
 <script>
-  const limite = 4;
+  const limite = 5;
   function navleft(order) {
     let neworder = limite; //numero identificador de la ultima pagina
     if (order !== 1) {
