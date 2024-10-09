@@ -34,10 +34,10 @@ Soy un desarrollador con experiencia en una variedad de tecnologías web y de so
 ## 🚀 Experiencia
 
 ### [Vision Banco](#)
-Gestion de base de datos en sql server en el área de cumplimiento, alta, baja y modificación de usuarios, reporteria y creación de scripts para consultas, modificación.
+Gestión de base de datos en Sql Server en el área de cumplimiento alta, baja y modificación de usuarios, reporteria y creación de scripts para consultas, modificación.
 
 ### [Iris Company](#)
-Desarrollo de webs frontend, en las tecnologias: 
+Desarrollo de webs frontend, en las tecnologías: 
  - vue js
  - astro js
  - javascript
