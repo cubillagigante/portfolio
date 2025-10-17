@@ -6,6 +6,6 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   site: "https://cubillagigante.github.io/portfolio",
-  base: "/portfolio",
+  base: "/",
   integrations: [tailwind(), icon()]
 });
