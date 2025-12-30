@@ -1,114 +1,154 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Social from '../components/social.astro';
-import Card from '../components/Card.astro';
-import Frontend from '../components/Frontendcom.astro';
-import Backend from '../components/Backend.astro';
-import Otrastec from '../components/Otrastec.astro';
-import { Icon } from 'astro-icon/components';
-
+import Layout from "../layouts/Layout.astro";
+import Social from "../components/Social.astro";
+import Card from "../components/Card.astro";
+import Backend from "../components/Stack.astro";
+import Carousel from "../components/Carousel.vue";
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="PORTFOLIO DC">
-	<main>
-		
-		<Social />
-	<div class="max-w-[80em] m-auto p-5 ">
-		
-		<div class="text-center p-5 text-black mb-5 flex justify-center">
-			<div class="">
-				<h1 class="font-bold text-2xl mb-1">Hola, soy Diego Cubilla!</h3>
-				<small class="text-justify text-lg">Programador Fullstack</small>
-				
-			</div>
-		</div>
-		<div class="w-full relative">
-			<!-- 
-			<section class="mb-5" data-aos="fade-right">
-				<section class=" rounded-xl bg-[#c80036] p-5 text-center text-white">
-					<h1 class="text-2xl font-semibold text-center">Hola, soy Diego Cubilla</h1>
-					<small class="text-xl font-thin">Desarrollador Frontend</small>	
-				</section>
-		</section>-->
-			<section class="mb-5" data-aos="fade-right">
+  <main>
+    <Social />
+    <div class="max-w-[80em] m-auto p-5">
+      <section
+        class="p-5 mb-5 relative rounded-xl bg-gradient-to-r from-[#ddab61] to-[#e09b32]
+         before:absolute before:inset-0
+         before:bg-[radial-gradient(rgba(255,255,255,0.1)_1px,transparent_0)]
+         before:bg-[length:4px_4px]
+         before:content-['']
+         before:pointer-events-none shadow-md shadow-gray-800 text-[#32373b] font-semibold"
+        data-aos="zoom-in"
+      >
+        <div
+          class="my-4 flex flex-col lg:flex-row justify-between items-center gap-x-5"
+        >
+          <div class="w-full mt-4 lg:mt-0 lg:w-[70%] order-2 lg:order-1">
+            <div class="flex flex-row lg:pl-10 px-4 gap-x-5 items-center">
+              <div>
+                <h1 class="text-2xl font-bold">SOBRE MI</h1>
+                <small class="text-lg font-normal">
+                  <p class="leading-8">
+                    Soy Diego Cubilla, desarrollador Fullstack con un enfoque
+                    integral en la creación de productos digitales. Mi
+                    experiencia abarca desde el despliegue de aplicaciones web y
+                    móviles hasta el desarrollo de sistemas de gestión y
+                    extensiones de navegador, cubriendo todo el ciclo de vida de
+                    una solución técnica.
+                  </p>
+                </small>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex order-1 lg:order-2 justify-center items-center w-full lg:w-[30%]"
+          >
+            <div
+              class="w-[40%] lg:w-60 flex border bg-[#ddab61] rounded-full shadow-md backdrop-blur-sm shadow-gray-800 overflow-hidden"
+            >
+              <img
+                src="/portfolio/profile.webp"
+                class="drop-shadow-lg shadow-amber-800"
+                alt="profile"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="w-full relative">
+        <section class="mb-5" data-aos="fade-right">
+          <section
+            class="rounded-xl p-5 bg-gradient-to-r from-[#ddab61] to-[#e09b32] shadow-md shadow-gray-800 text-[#32373b] font-semibold"
+            data-aos="zoom-in"
+          >
+            <div class="my-4 flex gap-x-5 items-center">
+              <div>
+                <Icon
+                  name="mdi:work"
+                  class="w-10 h-10 lg:w-20 lg:h-20 text-[#32373b]"
+                />
+              </div>
+              <div>
+                <h1 class="text-2xl font-bold">PORTAFOLIO</h1>
+                <small class="lg:text-lg text-sm font-normal"
+                  >Aqui puede ver los proyectos en los que he trabajado.</small
+                >
+              </div>
+            </div>
+            <div class="flex flex-col lg:flex-row h-full gap-2">
+              <div
+                class="flex gap-2 h-full text-white flex-col justify-center font-semibold"
+              >
+                <Card />
+              </div>
+              <div
+                class="rounded-lg w-full border-4 overflow-hidden bg-[#f4d6cc] border-[#3e363f] flex-1"
+              >
+                <Carousel client:load />
+              </div>
+            </div>
+          </section>
+        </section>
+        <section
+          class="rounded-xl p-5 bg-gradient-to-r from-[#ddab61] to-[#e09b32] shadow-md shadow-gray-800 text-[#fff] py-5 h-full"
+          data-aos="fade-right"
+        >
+          <div class="my-4 flex flex-col sm:flex-row w-full sm:justify-between gap-5 items-center">
+            <div class="flex gap-x-5 items-center">
+              <Icon
+                name="mdi:code-braces-box"
+                class="w-10 h-10 lg:w-20 lg:h-20 text-[#32373b]"
+              />
+              <div class="text-[#32373b]">
+                <h1 class="text-2xl font-bold">MI STACK</h1>
+                <small class="text-sm lg:text-lg font-normal"
+                  >Aqui puede ver las tecnologias que manejo.</small
+                >
+              </div>
+            </div>
+            <a
+              href={`portfolio/CV_DIEGOCUBILLA_2025.pdf`}
+              download
+              class="project-card group"
+            >
+              <div
+                data-aos="zoom-in"
+                class="card-inner
+                      relative overflow-hidden
+                      h-12 sm:w-20 w-40
+                      flex items-center justify-center
+                      rounded-lg
+                      bg-[#32373b]
+                      border-l-8 border-[#c83e4d]
+                      text-white
+                      transition-colors duration-200"
+                >
+                <!-- fondo animado -->
+                <span
+                  class="absolute inset-0
+                  bg-[#c83e4d]
+                  w-0
+                  transition-all duration-300 ease-out
+                  group-hover:w-full"
+                ></span>
 
-
-					<section class=" rounded-xl bg-[#c80036] p-5 text-center text-white">
-						<h1 class="text-2xl font-semibold text-center">PORTAFOLIO</h1>
-						<small class="text-lg">Aqui puede ver los proyectos en los que he trabajado.</small>
-						<hr class="my-5 w-40 m-auto border-2 rounded-full">
-						</hr>
-						
-						<div class=" p-2">
-							
-							<div class="flex gap-5 flex-wrap justify-center font-semibold">
-								<Card titles={['GOPLANX', 'PROYECTO SELTZ S.A', 'REGISTRO POR QR', 'RUCPY', 'JC MATERIALES']} 
-								descr={['projects/1', 'projects/2', 'projects/3', 'projects/4', 'projects/5']} />
-							</div>
-							
-						</div>
-					</section>
-
-			</section>
-			<section class=" rounded-xl bg-[#c80036] text-white py-5 h-full" data-aos="fade-right">
-				<h1 class="text-2xl font-semibold text-center">MIS CONOCIMIENTOS </h1>
-				<hr class="my-5 w-40 m-auto border-2 rounded-full">
-				</hr>
-				<section class=" gap-5 justify-center font-semibold">
-					<Frontend />
-					<Backend />
-					<Otrastec />
-				</section>
-
-			</section>
-			<section class=" rounded-xl bg-[#c80036] text-white my-5 h-full flex flex-col gap-10 justify-center p-10" data-aos="fade-right">
-					<div class="md:m-auto w-full md:w-1/2 flex justify-center  flex-col gap-5">
-						<h1 class="text-2xl font-semibold text-center">ENVIAME UN MENSAJE</h1>
-						<hr class=" w-40 m-auto border-2 border-gray-300 rounded-full">
-						</hr>
-						<div class="flex flex-col md:flex-row gap-5">
-							<span class="font-semibold">Nombre: </span>
-							<input id="nombre" type="text" placeholder="ej: Carlos Benitez" class="shadow shadow-gray-700 rounded-lg px-2 h-8 text-black w-full md:w-3/4" />
-						</div>
-						
-						<div class="flex flex-col md:flex-row gap-5">
-							<span class="font-semibold">Mensaje: </span>
-							<textarea id="texto" placeholder="Hola amigo! vi tu página web y me interesó, podemos conversar sobre un proyecto?" class="shadow shadow-gray-700 text-md rounded-lg p-2 h-20 text-black w-full md:w-3/4"></textarea>
-							
-						</div>
-						
-							<input id="enviar" type="submit" class=" w-60 m-auto ease-in duration-200 bg-red-800 text-white cursor-pointer hover:bg-[#FFF5E1] hover:text-[#0C1844] font-bold text-sm rounded-xl text-center py-2 px-10" value="Enviar"></input>
-					</div>	
-			</section>
-		</div>
-		
-	</div>
-	</main>
+                <!-- contenido -->
+                <span
+                  class="relative flex flex-row gap-x-2 items-center z-10 text-center"
+                >
+                  CV <Icon
+                    name="mdi:file-download"
+                    class="w-8 h-8 text-white"
+                  />
+                </span>
+              </div>
+            </a>
+          </div>
+          <section class="rounded-lg">
+            <Backend />
+          </section>
+        </section>
+      </div>
+    </div>
+  </main>
 </Layout>
-
-<script>
-	
-       
-		const enviar = document.getElementById('enviar');
-		enviar.addEventListener('click', () => {
-		  const display = document.getElementById('texto').value;
-		  const input = document.getElementById('nombre').value;
-
-		  console.log("nombre ", input);
-		  
-		  if (input === "") {
-			alert("No puede dejar el campo nombre vacio");
-		  } else if (display === "") {
-			alert("No puede dejar el campo mensaje vacio");
-		  } else {
-			
-			window.location.href = "https://wa.me/982229061?text=Hola Diego! me llamo " + input + " " + display;
-			
-		}
-         
-        });
-        
-    
-
-
-</script>

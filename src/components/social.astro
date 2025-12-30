@@ -1,82 +1,61 @@
 ---
 import { Icon } from "astro-icon/components";
-
-
 ---
-<div class=" w-14 h-screen justify-evenly fixed flex flex-col z-50">
-  <div id="drop-zoneTop" class="drop-zone cursor-move h-full justify-center border-dashed flex items-center ">
-      <div id="drag-item" draggable="true" class="drag-item bg-[#fff] p-2 rounded-xl">
-          <div class="w-full flex justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 20 20"><path fill="#c80036" d="M10 2a.75.75 0 0 1 .53.22l1.5 1.5a.75.75 0 0 1-1.06 1.06l-.22-.22v1.69a.75.75 0 0 1-1.5 0V4.56l-.22.22a.75.75 0 0 1-1.06-1.06l1.5-1.5A.75.75 0 0 1 10 2m2 8a2 2 0 1 1-4 0a2 2 0 0 1 4 0m-9.78-.53a.75.75 0 0 0 0 1.06l1.5 1.5a.75.75 0 0 0 1.06-1.06l-.22-.22h1.69a.75.75 0 0 0 0-1.5H4.56l.22-.22a.75.75 0 0 0-1.06-1.06zM10 18a.75.75 0 0 0 .53-.22l1.5-1.5a.75.75 0 1 0-1.06-1.06l-.22.22v-1.69a.75.75 0 0 0-1.5 0v1.69l-.22-.22a.75.75 0 0 0-1.06 1.06l1.5 1.5c.14.141.331.22.53.22m7.78-8.53a.75.75 0 0 1 0 1.06l-1.5 1.5a.75.75 0 1 1-1.06-1.06l.22-.22h-1.69a.75.75 0 0 1 0-1.5h1.69l-.22-.22a.75.75 0 0 1 1.06-1.06z"/></svg>
-          </div>
-          <hr class="my-1">
-          <img src="./py.png" class="w-12" alt="nacionalidad paraguaya" />
-          <a href="https://www.linkedin.com/in/diego-cubilla/">
-              <div>
-                  <Icon name="mdi:linkedin" class="w-10 h-10 text-[#c80036]" />
-              </div>
-          </a>
-          <a href="https://github.com/cubillagigante">
-              <div>
-                  <Icon name="mdi:github" class="w-10 h-10 text-[#c80036]" />
-              </div>
-          </a>
-      </div>
-  </div>
-  <div id="drop-zoneMiddle" class="drop-zone cursor-move h-full border-dashed justify-center flex items-center">
-      
-  </div>
-  <div id="drop-zoneBot" class="drop-zone cursor-move h-full border-dashed justify-center flex items-center">
-      
+
+<div class="fixed h-screen flex flex-col justify-evenly z-50 overflow-hidden">
+  <div class="  rounded-r-xl flex flex-col">
+    <!-- Botón toggle -->
+    <button
+      id="toggle-button"
+      class="w-full flex bg-[#32373b] shadow rounded-r-lg shadow-gray-700 justify-center text-white hover:text-[#e0a53a] transition-colors duration-200"
+      title="Mostrar / Ocultar"
+    >
+      <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8" viewBox="0 0 24 24">
+        <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+      </svg>
+    </button>
+
+    <!-- Contenedor de links -->
+    <div
+      id="floating-links"
+      class="mt-1 rounded-r-lg grid gap-y-2 bg-[#32373b] shadow shadow-gray-700 p-1 transform transition-all duration-300"
+    >
+      <a title="whatsapp" href="https://wa.me/595982229061">
+        <Icon name="mdi:whatsapp" class="w-7 h-7 text-white hover:text-[#f4b860]" />
+      </a>
+      <a title="linkedin" href="https://www.linkedin.com/in/diego-cubilla/">
+        <Icon name="mdi:linkedin" class="w-7 h-7 text-white hover:text-[#f4b860]" />
+      </a>
+      <a title="github" href="https://github.com/cubillagigante">
+        <Icon name="mdi:github" class="w-7 h-7 text-white hover:text-[#f4b860]" />
+      </a>
+    </div>
   </div>
 </div>
 
 <script>
-  const dragItem = document.getElementById('drag-item');
-  const dropzoneTop = document.getElementById('drop-zoneTop');
-  const dropzoneMiddle = document.getElementById('drop-zoneMiddle');
-  const dropzoneBot = document.getElementById('drop-zoneBot');
+  const toggleButton = document.getElementById('toggle-button');
+  const floatingLinks = document.getElementById('floating-links');
+  const menuIcon = document.getElementById('menu-icon');
 
-  dragItem.addEventListener('dragstart', (ev) => {
-      ev.dataTransfer.setData('text/plain', dragItem.id);
-  });
+  let isOpen = true;
 
-  const allowDrop = (ev) => {
-      dropzoneTop.classList.add("bg-[#db202052]");
-      dropzoneTop.classList.add("border-2");
-      dropzoneMiddle.classList.add("bg-[#db202052]");
-      dropzoneMiddle.classList.add("border-2");
-      dropzoneBot.classList.add("bg-[#db202052]");
-      dropzoneBot.classList.add("border-2");
-      ev.preventDefault(); // Necessary to allow the drop
+  toggleButton.addEventListener('click', () => {
+    isOpen = !isOpen;
+
+    if (isOpen) {
+      floatingLinks.classList.remove('-translate-x-full', 'opacity-0');
+      floatingLinks.classList.add('translate-x-0', 'opacity-100');
+
+      // Cambiar icono (izquierda -> derecha)
       
-  };
+      menuIcon.innerHTML = `<path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>`;
+    } else {
+      floatingLinks.classList.add('-translate-x-full', 'opacity-0');
+      floatingLinks.classList.remove('translate-x-0', 'opacity-100');
 
-  const handleDrop = (ev) => {
-      ev.preventDefault();
-      const id = ev.dataTransfer.getData('text/plain');
-      const item = document.getElementById(id);
-      // Ensure the drop target is a drop-zone
-      if (!ev.target.classList.contains('drop-zone')) {
-          ev.target = ev.target.closest('.drop-zone');
-      }
-      ev.target.appendChild(item);
-      item.style.position = 'relative'; // Reset the position
-      item.style.left = 'auto';
-      item.style.top = 'auto';
-
-      dropzoneTop.classList.remove("bg-[#db202052]");
-      dropzoneTop.classList.remove("border-2");
-      dropzoneMiddle.classList.remove("bg-[#db202052]");
-      dropzoneMiddle.classList.remove("border-2");
-      dropzoneBot.classList.remove("bg-[#db202052]");
-      dropzoneBot.classList.remove("border-2");
-  };
-
-  // Add event listeners to all drop zones
-  [dropzoneTop, dropzoneMiddle, dropzoneBot].forEach(zone => {
-      zone.addEventListener('dragover', allowDrop);
-      
-      zone.addEventListener('drop', handleDrop);
+      // Cambiar icono (derecha -> izquierda)
+      menuIcon.innerHTML = `<path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/>`;
+    }
   });
 </script>

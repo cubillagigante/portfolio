@@ -1,23 +1,78 @@
 ---
+import { projects } from "../data/projects.js";
 
-const { titles, descr, ban } = Astro.props;
-
+const project = Object.entries(projects);
 ---
 
-{
- 
-    // Renderizar si ban es igual a 1
-    descr.map((descr, index) => (
-      <a href={descr} id={index}>
-        <button type="submit">
-          <div
-            data-aos="zoom-in"
-            class="ease-in duration-200 hover:rounded-xl h-36 hover:text-[#0C1844] hover:bg-[#FFF5E1] flex justify-center rounded-lg bg-red-800 p-10 w-40 items-center text-center"
-          >
-            {titles[index] && <h3>{titles[index]}</h3>}
-          </div>
-        </button>
-      </a>
+<div class="flex flex-wrap justify-center lg:flex-col gap-3">
+  {
+    project.map((project, index) => (
+      <button
+        type="button"
+        class="project-card group"
+        data-index={index}
+        onclick={`window.dispatchEvent(
+          new CustomEvent('select-project', { detail: ${index} })
+        )`}
+      >
+        <div
+          data-aos="zoom-in"
+          class="
+            card-inner
+            relative overflow-hidden
+            h-16 w-32
+            lg:w-40
+            lg:h-20
+            flex items-center justify-center
+            rounded-lg
+            bg-[#32373b]
+            border-l-8 border-[#c83e4d]
+            text-white
+            transition-colors duration-200
+          "
+        >
+          <span
+            class="
+              absolute inset-0
+              bg-[#c83e4d]
+              w-0
+              transition-all duration-300 ease-out
+              group-hover:w-full
+            "
+          ></span>
+
+          <span class="relative text-sm lg:text-normal truncate w-64 px-4 z-10 text-center">
+            {project[1].title}
+          </span>
+        </div>
+      </button>
     ))
-  
-}
+  }
+</div>
+
+<script>
+  const cards = document.querySelectorAll(".project-card");
+
+  function setActive(index) {
+    cards.forEach((card, i) => {
+      card.classList.toggle("is-active", i === index);
+    });
+  }
+
+  window.addEventListener("project-changed", (e) => {
+    setActive(e.detail);
+  });
+
+  setActive(0);
+</script>
+
+<style>
+  .project-card.is-active .card-inner {
+    background: #c83e4d;
+    color: #fff;
+  }
+
+  .project-card.is-active span.absolute {
+    width: 100%;
+  }
+</style>

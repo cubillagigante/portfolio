@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div
+  data-aos="zoom-in"
+  class="group relative ease-in duration-200 hover:rounded-xl hover:text-[#f4b860] flex justify-center rounded-lg w-28 h-24 items-center text-center border border-transparent hover:border-gray-700"
+>
+  <slot />
+
+  <span
+    class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-gray-900 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100 z-10"
+  >
+    {title}
+    <span class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></span>
+  </span>
+</div>
